@@ -19,8 +19,10 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  
 /**
+ * copied from: http://crunchify.com/java-simple-qr-code-generator-example/
  * @author Boban Jevtic
- * @version 1.0
+ * @version 1.1
+ * 
  */
  
 public class QRCode {

@@ -15,7 +15,7 @@ import code.QRCode;
 
 /**
  * @author Boban Jevtic
- * @version 1.0
+ * @version 1.1
  */
 
 public class GUI {
@@ -27,7 +27,6 @@ public class GUI {
 	private JTextField code;
 	private JTextArea text;
 	private JLabel l1;
-	private JLabel l2;
 	
 	
 	/**
@@ -40,7 +39,6 @@ public class GUI {
 		this.f = new JFrame("Anmeldung");
 		this.c =  new Container();
 		this.l1 = new JLabel("Name: ");
-		this.l2 = new JLabel("QR-Code: ");
 		this.name = new JTextField(15);
 		this.code = new JTextField(15);
 		this.text = new JTextArea(20,30);
@@ -53,7 +51,6 @@ public class GUI {
 		
 		this.c.add(this.l1);
 		this.c.add(this.name);
-		this.c.add(this.l2);
 		this.c.add(this.code);
 		
 
@@ -85,7 +82,8 @@ public class GUI {
     	 */
     	myqrcode.setFilePath("C:/Users/Jevtic/workspace/OpenDoorDay/QRCode.png");
     	
-        myqrcode.generateCode("Hello World", myqrcode.getFilePath());
+        /** Die Id steht im QR-Code drin */
+    	myqrcode.generateCode("Hello World", myqrcode.getFilePath());
 		
 		ImageImporter im = new ImageImporter();
 		
