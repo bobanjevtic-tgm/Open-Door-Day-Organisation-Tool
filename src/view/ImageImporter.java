@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 /**
  * 
- * @author Jevtic
+ * @author Boban Jevtic
  * @version 1.1
  *
  */

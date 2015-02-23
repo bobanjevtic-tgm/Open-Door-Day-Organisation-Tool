@@ -24,7 +24,6 @@ public class GUI {
 	private JFrame f;
 	private Container c;
 	private JTextField name;
-	private JTextField code;
 	private JTextArea text;
 	private JLabel l1;
 	
@@ -40,7 +39,6 @@ public class GUI {
 		this.c =  new Container();
 		this.l1 = new JLabel("Name: ");
 		this.name = new JTextField(15);
-		this.code = new JTextField(15);
 		this.text = new JTextArea(20,30);
 		/** Layouts setzen */
 		this.c.setLayout(new GridLayout(2,2));
@@ -51,7 +49,6 @@ public class GUI {
 		
 		this.c.add(this.l1);
 		this.c.add(this.name);
-		this.c.add(this.code);
 		
 
 		

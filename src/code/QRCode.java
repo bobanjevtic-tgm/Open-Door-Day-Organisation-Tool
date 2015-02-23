@@ -18,8 +18,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  
-/**
- * copied from: http://crunchify.com/java-simple-qr-code-generator-example/
+/** Diesen Code habe ich von der folgenden Quelle uebernommen:
+ * http://crunchify.com/java-simple-qr-code-generator-example/
  * @author Boban Jevtic
  * @version 1.1
  * 
