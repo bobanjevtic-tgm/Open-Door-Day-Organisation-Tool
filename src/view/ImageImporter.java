@@ -1,5 +1,6 @@
 package view;
 import javax.swing.ImageIcon;
+
 import javax.swing.JLabel;
 
 
@@ -24,5 +25,6 @@ public class ImageImporter {
         	ImageIcon icon = new ImageIcon(text);
         	JLabel label = new JLabel(icon);
         	return label;
-        }
+        }   
+ 
 }

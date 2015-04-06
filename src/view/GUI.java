@@ -15,7 +15,7 @@ import code.QRCode;
 
 /**
  * @author Boban Jevtic
- * @version 1.1
+ * @version 1.2
  */
 
 public class GUI {
@@ -64,36 +64,5 @@ public class GUI {
 		this.f.setVisible(true);
 		
 	}
-	
-	/**
-	 * Testmethode
-	 * @param args
-	 */
 
-	public static void main(String [] args) {
-		
-    	QRCode myqrcode = new QRCode();
-    	
-    	/** 
-    	 * Setze den Dateipfad
-    	 */
-    	myqrcode.setFilePath("C:/Users/Jevtic/workspace/OpenDoorDay/QRCode.png");
-    	
-        /** Die Id steht im QR-Code drin */
-    	myqrcode.generateCode("Hello World", myqrcode.getFilePath());
-		
-		ImageImporter im = new ImageImporter();
-		
-		/**
-		 * Fuege ein Bild hinzu im Fenster
-		 */
-		JLabel l = im.addExistingImage("C:/Users/Jevtic/workspace/OpenDoorDay/QRCode.png");
-		
-		GUI gui = new GUI(l);
-		
-		
-		
-	}
-
-	
 }
