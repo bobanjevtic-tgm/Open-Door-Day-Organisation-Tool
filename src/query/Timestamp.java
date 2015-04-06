@@ -69,12 +69,4 @@ public class Timestamp {
 		st.executeUpdate(sql);
 	}
 	
-	public static void main(String []args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		MyConnection con = new MyConnection();
-		con.connect("localhost", "root", "1997", "tdot");
-		Timestamp t = new Timestamp(con);
-		t.insert();
-		t.delete("timer");
-	}
-	
 }
