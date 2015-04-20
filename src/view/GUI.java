@@ -1,6 +1,7 @@
 package view;
 
 
+
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import test.CardScanner;
 import code.QRCode;
 
 
@@ -26,7 +28,8 @@ public class GUI {
 	private JTextField name;
 	private JTextArea text;
 	private JLabel l1;
-	
+	private CardScanner cs;
+	private QRCode myqrcode;
 	
 	/**
 	 * 
@@ -34,7 +37,7 @@ public class GUI {
 	 * Durch den Aufruf waehrend des Erzeugens von ein Objekt, wird ein Platz im Fenster verlangt,
 	 * wo das Bild positioniert werden soll im Parameter
 	 */
-	public GUI(JLabel l) {	
+	public GUI() {
 		this.f = new JFrame("Anmeldung");
 		this.c =  new Container();
 		this.l1 = new JLabel("Name: ");
@@ -54,15 +57,27 @@ public class GUI {
 		
 		/** Components zu JFrame hinzufuegen */
 		
-		this.f.add(this.c);
-		this.f.add(l);
-		
+
+	
 		
 		this.f.setSize(460, 550);
 		
 		this.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.f.setVisible(true);
+		myqrcode = new QRCode();
+    	
+ 		
+	}
+	
+	public void update(String sid){
+
+	}
+	
+	public void update(JLabel l) {
+		System.out.println("update(JLabel l)");
 		
+		this.f.add(l);
+		this.f.repaint();
 	}
 
 }
