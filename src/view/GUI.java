@@ -1,18 +1,10 @@
 package view;
 
 
-
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-import test.CardScanner;
 import code.QRCode;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 /**
@@ -20,15 +12,13 @@ import code.QRCode;
  * @version 1.2
  */
 
-public class GUI {
-	
+public class GUI extends JFrame{
 	/** Wichtiste Kompomenten für die GUI definieren */
-	private JFrame f;
-	private Container c;
-	private JTextField name;
-	private JTextArea text;
-	private JLabel l1;
-	private CardScanner cs;
+	private JLabel titel, name, qr;
+	private JPanel container;
+
+	private static String QRPath;
+
 	private QRCode myqrcode;
 	
 	/**
@@ -38,46 +28,50 @@ public class GUI {
 	 * wo das Bild positioniert werden soll im Parameter
 	 */
 	public GUI() {
-		this.f = new JFrame("Anmeldung");
-		this.c =  new Container();
-		this.l1 = new JLabel("Name: ");
-		this.name = new JTextField(15);
-		this.text = new JTextArea(20,30);
-		/** Layouts setzen */
-		this.c.setLayout(new GridLayout(2,2));
-		this.f.setLayout(new FlowLayout());
-		
-		
-		/** Components hinzufuegen */
-		
-		this.c.add(this.l1);
-		this.c.add(this.name);
-		
+		QRPath = "/img/qr.png";
 
-		
-		/** Components zu JFrame hinzufuegen */
-		
+		container = new JPanel();
+		titel = new JLabel("TDOTO - Anmeldung");
+		name = new JLabel("");
+		qr = new JLabel("");
 
-	
-		
-		this.f.setSize(460, 550);
-		
-		this.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.f.setVisible(true);
+		/* layout setzen */
+		this.setLayout(new BorderLayout());
+		container.setLayout(new GridLayout(2, 1));
+
+		/* components hinzufügen */
+		this.add(container, BorderLayout.SOUTH);
+		container.add(titel);
+		container.add(name);
+		this.add(qr);
+
+		/* frame-configuration */
+		this.setTitle("TDOTO - Anmeldung");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(460, 550);
+		this.setResizable(false);
+		this.setVisible(true);
+
 		myqrcode = new QRCode();
-    	
- 		
 	}
 	
 	public void update(String sid){
+		name.setText(sid);
 
+		myqrcode.setFilePath(QRPath);
+		myqrcode.generateCode(sid, myqrcode.getFilePath());
+
+		update(ImageImporter.imageToLabel(QRPath));
 	}
 	
 	public void update(JLabel l) {
 		System.out.println("update(JLabel l)");
-		
-		this.f.add(l);
-		this.f.repaint();
+
+		this.remove(qr);
+		qr = l;
+		this.add(qr);
+
+		this.repaint();
 	}
 
 }

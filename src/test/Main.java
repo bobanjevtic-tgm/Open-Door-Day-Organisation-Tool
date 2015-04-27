@@ -1,19 +1,6 @@
 package test;
 
-
-
-
-import java.sql.SQLException;
-
-
-import javax.swing.JLabel;
-
-import query.Timestamp;
-import connection.MyConnection;
 import view.GUI;
-import view.ImageImporter;
-import code.QRCode;
-
 
 /**
  * 
@@ -27,14 +14,12 @@ import code.QRCode;
  * Diese Klasse ist fuer das Starten des Programmes zustaendig
  */
 public class Main {
+	private static GUI g;
+	private static CardScanner cs;
 
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		
-		
-		
-		
-		new CardScanner();
-		
+	public static void main(String[] args) {
+		g = new GUI();
+		cs = new CardScanner(g);
 	}
 	
 }

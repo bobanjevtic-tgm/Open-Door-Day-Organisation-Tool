@@ -1,11 +1,11 @@
 package test;
 
 
-import static org.junit.Assert.*;
-
-import javax.swing.JLabel;
-
 import view.ImageImporter;
+
+import javax.swing.*;
+
+//import org.junit.Assert.*;
 
 
 
@@ -16,10 +16,9 @@ public class Test {
 	 * @version 1.0
 	 */
 	
-	@org.junit.Test
+//	@Test
 	public void testAddImage() {
-		ImageImporter im = new ImageImporter();
-		assertEquals(new JLabel(),im.addExistingImage("C:/Users/Jevtic/workspace/OpenDoorDay/QRCode.png"));
+//		assertEquals(new JLabel(),ImageImporter.imageToLabel("C:/Users/Jevtic/workspace/OpenDoorDay/QRCode.png"));
 	}
 	
 	

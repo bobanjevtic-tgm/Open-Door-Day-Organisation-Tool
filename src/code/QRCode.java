@@ -1,22 +1,19 @@
 package code;
 
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Hashtable;
-
-import javax.imageio.ImageIO;
-
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Hashtable;
  
 /** Diesen Code habe ich von der folgenden Quelle uebernommen:
  * http://crunchify.com/java-simple-qr-code-generator-example/
@@ -55,8 +52,8 @@ public class QRCode {
 	}
 	
 	/**
-	 * @param textCode............. Den Code als Text eingeben
-	 * @param filePath............. Den Dateipfad angeben, wo der QR Code erzeugt werden soll
+	 * @param textCode Den Code als Text eingeben
+	 * @param filePath Den Dateipfad angeben, wo der QR Code erzeugt werden soll
 	 */
 	public void generateCode(String textCode, String filePath) {
 		
