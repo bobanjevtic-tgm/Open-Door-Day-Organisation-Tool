@@ -3,15 +3,10 @@ package test;
 import view.GUI;
 
 /**
+ * Diese Klasse ist fuer das Starten des Programmes zustaendig
  * 
  * @author Boban Jevtic
-
  * @version 1.0
- */
-
-
-/**
- * Diese Klasse ist fuer das Starten des Programmes zustaendig
  */
 public class Main {
 	private static GUI g;
@@ -21,5 +16,4 @@ public class Main {
 		g = new GUI();
 		cs = new CardScanner(g);
 	}
-	
 }

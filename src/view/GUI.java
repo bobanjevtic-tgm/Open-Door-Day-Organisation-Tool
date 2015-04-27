@@ -1,17 +1,14 @@
 package view;
 
-
 import code.QRCode;
 
 import javax.swing.*;
 import java.awt.*;
 
-
 /**
  * @author Boban Jevtic
  * @version 1.2
  */
-
 public class GUI extends JFrame{
 	/** Wichtiste Kompomenten für die GUI definieren */
 	private JLabel titel, name, qr;
@@ -22,8 +19,6 @@ public class GUI extends JFrame{
 	private QRCode myqrcode;
 	
 	/**
-	 * 
-	 * @param l
 	 * Durch den Aufruf waehrend des Erzeugens von ein Objekt, wird ein Platz im Fenster verlangt,
 	 * wo das Bild positioniert werden soll im Parameter
 	 */
@@ -55,7 +50,7 @@ public class GUI extends JFrame{
 		myqrcode = new QRCode();
 	}
 	
-	public void update(String sid){
+	public void update(String sid) {
 		name.setText(sid);
 
 		myqrcode.setFilePath(QRPath);
