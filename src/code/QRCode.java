@@ -56,35 +56,33 @@ public class QRCode {
 	 * @param filePath Den Dateipfad angeben, wo der QR Code erzeugt werden soll
 	 */
 	public void generateCode(String textCode, String filePath) {
-		
-		
-		
-		/** Datei erzeugen */
+
+		/* Datei erzeugen */
         File myFile = new File(filePath);
         try {
             Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             
-            /** Erzeuge einen neuen Codeschreiber */
+            /* Erzeuge einen neuen Codeschreiber */
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             
-            /** Ein CodeWriter, der den verschluesselten Code wieder entschluesselt */
+            /* Ein CodeWriter, der den verschluesselten Code wieder entschluesselt */
             BitMatrix byteMatrix = qrCodeWriter.encode(textCode,BarcodeFormat.QR_CODE, size, size, hintMap);
             
-            /** Laenge und Breite des Bildes ermitteln */
+            /* Laenge und Breite des Bildes ermitteln */
             BufferedImage image = new BufferedImage(byteMatrix.getWidth(), byteMatrix.getWidth(), BufferedImage.TYPE_INT_RGB);
             
             
-            /**  Erzeuge eine Graphik von QR */
+            /*  Erzeuge eine Graphik von QR */
             image.createGraphics();
  
-            /** Eine Grafik, die nur schwarz/weisse Farben hat *, Zeichnen und Färben des Rechtecks */
+            /* Eine Grafik, die nur schwarz/weisse Farben hat *, Zeichnen und Färben des Rechtecks */
             Graphics2D graphics = (Graphics2D) image.getGraphics();
             graphics.setColor(Color.WHITE);
             graphics.fillRect(0, 0, byteMatrix.getWidth(), byteMatrix.getWidth());
             graphics.setColor(Color.BLACK);
  
-            /** Bild zeichnen, Groesse des Bildes in der Schleife durchlaufen*/
+            /* Bild zeichnen, Groesse des Bildes in der Schleife durchlaufen */
             
             for (int i = 0; i < byteMatrix.getWidth(); i++) {
                 for (int j = 0; j < byteMatrix.getWidth(); j++) {
@@ -93,20 +91,20 @@ public class QRCode {
                     }
                 }
             }
-            
-            /** Image erstellen  */
+
+            /* falls das file existiert löschen, dann neu erstellen */
+            if(myFile.exists()) myFile.delete();
+            myFile.createNewFile();
+
+            /* Image erstellen  */
             ImageIO.write(image, fileType, myFile);
-            /**
-             * Abfangen der Exceptions, wenn der User beispielsweise den Pfad  
-             * fehlerhaft angibt
-             */
+
+            System.out.println("QR Code has been created successfully!");
         } catch (WriterException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-  
-        System.out.println("QR Code has been created successfully!");
 	}
  
 }

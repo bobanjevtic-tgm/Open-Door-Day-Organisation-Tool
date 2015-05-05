@@ -2,71 +2,96 @@ package view;
 
 import code.QRCode;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author Boban Jevtic
  * @version 1.2
  */
 public class GUI extends JFrame{
-	/** Wichtiste Kompomenten für die GUI definieren */
-	private JLabel titel, name, qr;
-	private JPanel container;
+	private JLabel name;
+	private JComponent qr;
 
 	private static String QRPath;
 
 	private QRCode myqrcode;
-	
-	/**
-	 * Durch den Aufruf waehrend des Erzeugens von ein Objekt, wird ein Platz im Fenster verlangt,
-	 * wo das Bild positioniert werden soll im Parameter
-	 */
+
 	public GUI() {
-		QRPath = "/img/qr.png";
+		this(false);
+	}
 
-		container = new JPanel();
-		titel = new JLabel("TDOTO - Anmeldung");
+	public GUI(boolean fullScreen) {
+		QRPath = "img/qr.png";
+
+		JPanel container = new JPanel();
+		JLabel titel = new JLabel("TDOTO - Anmeldung");
 		name = new JLabel("");
-		qr = new JLabel("");
+		qr = new JLabel("Gib mir deine EDU-Card!");
 
-		/* layout setzen */
-		this.setLayout(new BorderLayout());
+		/* container layout */
 		container.setLayout(new GridLayout(2, 1));
-
-		/* components hinzufügen */
-		this.add(container, BorderLayout.SOUTH);
 		container.add(titel);
 		container.add(name);
+
+		/* main layout */
+		this.setLayout(new BorderLayout());
+		this.add(container, BorderLayout.NORTH);
 		this.add(qr);
 
 		/* frame-configuration */
 		this.setTitle("TDOTO - Anmeldung");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(460, 550);
-		this.setResizable(false);
+
+		if(fullScreen){
+			this.setUndecorated(true);
+			this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		}else{
+			this.setLocation(10, 10);
+			this.setSize(460, 550);
+			this.setResizable(false);
+		}
+
 		this.setVisible(true);
 
 		myqrcode = new QRCode();
+		myqrcode.setFilePath(QRPath);
 	}
 	
 	public void update(String sid) {
+		if(sid.isEmpty()){
+			return;
+		}
+
 		name.setText(sid);
 
-		myqrcode.setFilePath(QRPath);
-		myqrcode.generateCode(sid, myqrcode.getFilePath());
-
-		update(ImageImporter.imageToLabel(QRPath));
+		this.update(this.generateQRLabel("http://ip/login?mode=plain&sid=" + sid));
 	}
 	
 	public void update(JLabel l) {
 		System.out.println("update(JLabel l)");
 
-		this.remove(qr);
+		if(qr != null){
+			this.remove(qr);
+		}
 		qr = l;
 		this.add(qr);
-
-		this.repaint();
 	}
 
+	private JLabel generateQRLabel(String text){
+		myqrcode.generateCode(text, myqrcode.getFilePath());
+
+		try {
+			JLabel temp = new JLabel("",SwingConstants.CENTER);
+			temp.setIcon(new ImageIcon(ImageIO.read(new File(QRPath))));
+			return temp;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }

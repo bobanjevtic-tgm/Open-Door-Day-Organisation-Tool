@@ -24,14 +24,16 @@ public class CardScanner extends JFrame implements ActionListener {
 		b = new JButton("scan");
 		b.addActionListener(this);
 
-		this.setLayout(new GridLayout(2, 1));
+		this.setLayout(new GridLayout(3, 1));
 		this.add(l);
 		this.add(t);
 		this.add(b);
 
+		/* frame config */
 		this.setTitle("Cardscanner Emulator");
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.setSize(200, 300);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		this.setSize(300, 100);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
