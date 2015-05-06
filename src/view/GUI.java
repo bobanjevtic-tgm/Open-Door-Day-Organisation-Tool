@@ -28,9 +28,9 @@ public class GUI extends JFrame{
 		QRPath = "img/qr.png";
 
 		JPanel container = new JPanel();
-		JLabel titel = new JLabel("TDOTO - Anmeldung");
-		name = new JLabel("");
-		qr = new JLabel("Gib mir deine EDU-Card!");
+		JLabel titel = new JLabel("<html><body><h1>TDOTO - Anmeldung</h1></body></html>",SwingConstants.CENTER);
+		name = new JLabel("",SwingConstants.CENTER);
+		qr = new JLabel("Gib mir deine EDU-Card!",SwingConstants.CENTER);
 
 		/* container layout */
 		container.setLayout(new GridLayout(2, 1));

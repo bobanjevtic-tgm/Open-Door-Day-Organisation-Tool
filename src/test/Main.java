@@ -15,12 +15,18 @@ public class Main {
 	private static CardScanner cs;
 
 	public static void main(String[] args) {
-		g = new GUI(true);
+		boolean fullScreen = false;
+
+		g = new GUI(fullScreen);
 		cs = new CardScanner(g);
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		cs.setLocation((int)(screenSize.getWidth()-cs.getWidth()-10),(int)(screenSize.getHeight()-cs.getHeight()-50));
+		if(fullScreen){
+			cs.setLocation((int)(screenSize.getWidth()-cs.getWidth()-10),(int)(screenSize.getHeight()-cs.getHeight()-50));
+		}else{
+			cs.setLocation(g.getWidth()+20,10);
+		}
 		cs.setAlwaysOnTop(true);
 	}
 }
